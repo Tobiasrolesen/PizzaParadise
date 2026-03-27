@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p>Velkommen til konto oprettelse</p>
+
+<form th:action="@{/createUser}" method="post" th:object="${user}">
+
+    <label> Name </label>
+    <input type="text" th:field="*{name}"/><br>
+
+    <label>Email</label>
+    <input type="email" th:field="*{email}" /><br>
+
+    <label>Adress</label>
+    <input type="text" th:field="*{adress}" /><br>
+
+    <label>Password</label>
+    <input type="password" th:field="*{password}" /><br>
+
+    <button type="submit">Create</button>
+
+    <p th:if="${error}" th:text="${error}">
+</form>
+
+</body>
+</html>
