@@ -35,11 +35,11 @@ public class Pizza {
     public void setName(String name) {
         this.name = name;
     }
-    public String getDetails() {
-        return details;
+    public String getBase() {
+        return base;
     }
-    public void setDetails(String details) {
-        this.details = details;
+    public void setBase(String details) {
+        this.base = details;
     }
     public double getPrice() {
         return price;
@@ -47,11 +47,11 @@ public class Pizza {
     public void setPrice(int price) {
         this.price = price;
     }
-    public String getPizzaBase() {
-        return pizzaBase;
+    public String getTopping() {
+        return topping;
     }
-    public void setPizzaBase(String pizzaBase) {
-        this.pizzaBase = pizzaBase;
+    public void setTopping(String topping) {
+        this.topping = topping;
     }
     public String getSauce() {
         return sauce;

@@ -11,8 +11,9 @@ import java.util.List;
 public class PizzaService {
 
     private final PizzaRepository pizzaRepository;
+    private final Validation validation;
 
-    public PizzaService(PizzaRepository pizzaRepository) {
+    public PizzaService(PizzaRepository pizzaRepository, Validation validation) {
         this.pizzaRepository = pizzaRepository;
         this.validation = validation;
     }
