@@ -4,31 +4,25 @@ public class Pizza {
 
     private int id;
     private String name;
-    private String details;
-    private double price;
-    private String pizzaBase;
+    private String base;
     private String sauce;
+    private String topping;
+    private double price;
+    private String img;
 
     public Pizza(){
     }
 
-    public Pizza(int id, String name, String details, double price, String pizzaBase, String sauce) {
+    public Pizza(int id, String name, String base, String sauce, String topping, double price, String img) {
         this.id = id;
         this.name = name;
-        this.details = details;
-        this.price = price;
-        this.pizzaBase = pizzaBase;
+        this.base = base;
         this.sauce = sauce;
+        this.topping = topping;
+        this.price = price;
+        this.img = img;
     }
 
-    public Pizza(String name, String details, double price, String pizzaBase, String sauce) {
-        this.name = name;
-        this.details = details;
-        this.price = price;
-        this.pizzaBase = pizzaBase;
-        this.sauce = sauce;
-
-    }
     public int getId() {
         return id;
     }
@@ -64,5 +58,11 @@ public class Pizza {
     }
     public void setSauce(String sauce) {
         this.sauce = sauce;
+    }
+    public String getImg() {
+        return img;
+    }
+    public void setImg(String img) {
+        this.img = img;
     }
 }

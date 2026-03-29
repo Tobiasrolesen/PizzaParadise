@@ -1,4 +1,6 @@
+DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS pizzas;
 
 CREATE TABLE users (
                        id INT AUTO_INCREMENT PRIMARY KEY,
@@ -7,5 +9,25 @@ CREATE TABLE users (
                        password VARCHAR(50) NOT NULL,
                        adress VARCHAR(150) NOT NULL,
                        bonusPoint INT NOT NULL DEFAULT 0
-
 );
+
+CREATE TABLE pizzas (
+                        id INT AUTO_INCREMENT PRIMARY KEY,
+                        name VARCHAR(100) NOT NULL,
+                        base VARCHAR(100) NOT NULL,
+                        sauce VARCHAR (100) NOT NULL,
+                        topping VARCHAR(100) NOT NULL,
+                        price double NOT NULL,
+                        img VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE orders (
+                        id INT AUTO_INCREMENT PRIMARY KEY,
+                        userId int NOT NULL,
+                        base VARCHAR(100) NOT NULL,
+                        sauce VARCHAR (100) NOT NULL,
+                        topping VARCHAR(100) NOT NULL,
+                        totalPrice DOUBLE NOT NULL,
+                        date TIMESTAMP NOT NULL,
+                        FOREIGN KEY (userId) REFERENCES users(id)
+)

@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import com.example.pizzaparadise.service.UserService;
 
 @Controller
+@SessionAttributes("user")
 public class UserController {
 
     private final UserService userService;
@@ -32,7 +33,7 @@ public class UserController {
             }
 
             model.addAttribute("user", user);
-            return "login";
+            return "index";
 
         } catch(Exception ex) {
             System.out.println("Error: " + ex.getMessage());
@@ -57,5 +58,10 @@ public class UserController {
     public String showLoginPage(Model model){
         model.addAttribute("user", new User());
         return "login";
+    }
+
+    @GetMapping("/profile")
+    public String profile() {
+        return "profile";
     }
 }

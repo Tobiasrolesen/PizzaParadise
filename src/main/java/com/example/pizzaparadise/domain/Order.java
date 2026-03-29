@@ -1,30 +1,47 @@
 package com.example.pizzaparadise.domain;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class Order {
     private int id;
-    private LocalTime dato;
+    private User user;
+    private Pizza pizza;
+    private LocalDateTime date;
     private double totalPrice;
 
-    public Order(int id, LocalTime dato, double totalPrice) {
+    public Order(int id, User user, Pizza pizza, LocalDateTime date, double totalPrice) {
         this.id = id;
-        this.dato = dato;
+        this.user = user;
+        this.pizza = pizza;
+        this.date = date;
         this.totalPrice = totalPrice;
     }
 
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
+    }
+    public Pizza getPizza() {
+        return pizza;
+    }
+    public void setPizza(Pizza pizza) {
+        this.pizza = pizza;
+    }
     public int getId() {
         return id;
     }
     public void setId(int id) {
         this.id = id;
     }
-    public LocalTime getDato() {
-        return dato;
+    public LocalDateTime getDate() {
+        return date;
     }
-    public void setDato(LocalTime dato) {
-        this.dato = dato;
+    public void setDato(LocalDateTime date) {
+        this.date = date;
     }
     public double getTotalPrice() {
         return totalPrice;

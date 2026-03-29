@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>make a Pizza</title>
+</head>
+<body>
+
+<h1>Create Pizza</h1>
+
+<form action="/createPizza" method="post">
+
+    <label> Bund </label>
+    <select name="base">
+        <option value="almindelig">Almindelig bund</option>
+        <option value="deepPan">Deep pan</option>
+        <option value="calizone">Calizone</option>
+    </select>
+
+    <label> Sauce </label>
+    <select name="sauce">
+        <option value="tomat">Tomat sauce</option>
+        <option value="timian">Timian tomat sauce</option>
+        <option value="hvidløg">Hvidløgs tomatsuace</option>
+    </select>
+
+    <label> Topping </label>
+    <select name="topping">
+        <option value="pepperoni">Pepperoni</option>
+        <option value="sausage">Sausage</option>
+        <option value="mushrooms">Mushrooms</option>
+        <option value="egg">Eggs</option>
+        <option value="onions">Onions</option>
+        <option value="Bacon">Bacon</option>
+    </select>
+
+    <br><br>
+
+    <button type ="submit"> Create Pizza</button>
+
+    </form>
+
+</body>
+</html>
