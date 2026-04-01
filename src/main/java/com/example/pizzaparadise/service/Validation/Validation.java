@@ -18,23 +18,19 @@ public class Validation {
         double totalPrice = order.getTotalPrice();
 
         if (id < 0) {
-            throw new ValidationException("Order id is negative");
+            throw new ValidationExceptionOrder("Order id is negative");
         }
 
         if (user == null || user.isEmpty()) {
-            throw new ValidationException("Username cannot be empty empty");
-        }
-
-        if (pizza == null || pizza.isEmpty()) {
-            throw new ValidationException("Pizza cannot be empty");
+            throw new ValidationExceptionOrder("Username cannot be empty empty");
         }
 
         if (date == null || date.isEmpty()) {
-            throw new ValidationException("Date cannot be empty");
+            throw new ValidationExceptionOrder("Date cannot be empty");
         }
 
         if (totalPrice < 0) {
-            throw new ValidationException("Total price is negative");
+            throw new ValidationExceptionOrder("Total price is negative");
         }
     }
 
@@ -47,27 +43,27 @@ public class Validation {
         double price = pizza.getPrice();
 
         if (id < 0) {
-            throw new ValidationException("Pizza id is negative");
+            throw new ValidationExceptionPizza("Pizza id is negative");
         }
 
         if (name == null || name.isEmpty()) {
-            throw new ValidationException("Pizza name cannot be empty");
+            throw new ValidationExceptionPizza("Pizza name cannot be empty");
         }
 
         if (base == null || base.isEmpty()) {
-            throw new ValidationException("Pizza base is empty");
+            throw new ValidationExceptionPizza("Pizza base is empty");
         }
 
         if (sauce == null || sauce.isEmpty()) {
-            throw new ValidationException("Pizza sauce is empty");
+            throw new ValidationExceptionPizza("Pizza sauce is empty");
         }
 
         if (topping == null || topping.isEmpty()) {
-            throw new ValidationException("Pizza topping is empty");
+            throw new ValidationExceptionPizza("Pizza topping is empty");
         }
 
         if (price < 0) {
-            throw new ValidationException("Pizza price is negative");
+            throw new ValidationExceptionPizza("Pizza price is negative");
         }
     }
 
@@ -80,19 +76,19 @@ public class Validation {
         int bonusPoint = user.getBonusPoint();
 
         if (id < 0) {
-            throw new ValidationException("User id is negative");
+            throw new ValidationExceptionUser("User id is negative");
         }
 
         if (name == null || name.isEmpty()) {
-            throw new ValidationException("Username cannot be empty");
+            throw new ValidationExceptionUser("Username cannot be empty");
         }
 
         if (email == null || email.isEmpty()) {
-            throw new ValidationException("Email cannot be empty");
+            throw new ValidationExceptionUser("Email cannot be empty");
         }
 
         if (password == null || password.isEmpty()) {
-            throw new ValidationException("Password cannot be empty");
+            throw new ValidationExceptionUser("Password cannot be empty");
         }
 
         if (adress == null || adress.isEmpty()) {
