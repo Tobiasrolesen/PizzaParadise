@@ -9,6 +9,8 @@ import com.example.pizzaparadise.service.Validation.Validation;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class OrderService {
@@ -23,28 +25,32 @@ public class OrderService {
         this.validation = validation;
     }
 
-
-    public void createCustomPizzaOrder(String base, String sauce, String topping, User user){
-
-
-        Pizza customPizza = new Pizza (
-                0,
-                "Custom pizza",
-                base,
-                sauce,
-                topping,
-                109.95,
-                "peperoni.jpg"
-        );
-
-        Order order = new Order(
+    public Order startOrder (User user){
+        return new Order(
                 0,
                 user,
-                customPizza,
+                new ArrayList<>(),
                 LocalDateTime.now(),
-                customPizza.getPrice()
+                0
         );
+    }
 
+    public void addPizza(Order order, Pizza pizza){
+        order.getPizzas().add(pizza);
+        order.setTotalPrice(order.getTotalPrice() + pizza.getPrice());
+    }
+
+    public void finalOrder(Order order){
         orderRepository.save(order);
+    }
+
+    public List<Order> getOrderHistory(User user){
+        List<Order> orders = orderRepository.findOrdersByUserId(user.getId());
+
+        for (Order order : orders) {
+            List<Pizza> pizzas = orderRepository.findItemsByOrderId(order.getId());
+            order.getPizzas().addAll(pizzas);
+        }
+        return orders;
     }
 }

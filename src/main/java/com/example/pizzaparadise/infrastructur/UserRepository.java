@@ -15,10 +15,10 @@ public class UserRepository implements IUserRepository {
 
     public User findUserByEmail(String email) {
         String sql = """
-            SELECT id, name, email, password, adress, bonusPoint
-            FROM users
-            WHERE email = ?
-            """;
+                SELECT id, name, email, password, adress, bonusPoint
+                FROM users
+                WHERE email = ?
+                """;
 
         return jdbcTemplate.queryForObject(sql, new Object[]{email}, (rs, rowNum) ->
                 new User(
@@ -28,7 +28,8 @@ public class UserRepository implements IUserRepository {
                         rs.getString("password"),
                         rs.getString("adress"),
                         rs.getInt("bonusPoint"),
-                        null
+                        null,
+                        true
                 )
         );
     }

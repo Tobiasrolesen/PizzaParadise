@@ -10,30 +10,47 @@ import com.example.pizzaparadise.service.UserService;
 @SessionAttributes("user")
 public class UserController {
 
+    @ModelAttribute("user")
+    public User user() {
+        return new User();
+    }
+
     private final UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
+    @GetMapping("/")
+    public String index(@ModelAttribute("user") User user){
+        if (user != null && user.isCurrentLogin()) {
+            return "homePageLoginTrue";
+        }
+        return "index";
+    }
+
     @GetMapping("/createUser")
     public String createUser(Model model) {
-        model.addAttribute("user", new User());
         return "createUser";
+    }
+
+    @GetMapping("/login")
+    public String showLoginPage(Model model){
+        model.addAttribute("loginForm", new User());
+        return "login";
+    }
+
+    @GetMapping("/profile")
+    public String profile() {
+        return "profile";
     }
 
     @PostMapping("/createUser")
     public String createUser(@ModelAttribute("user") User user, Model model) {
         try {
             userService.createUser(user);
-
-            if (user == null) {
-                model.addAttribute("error", "Invalid email or password");
-                return "createUser";
-            }
-
             model.addAttribute("user", user);
-            return "index";
+            return "login";
 
         } catch(Exception ex) {
             System.out.println("Error: " + ex.getMessage());
@@ -42,26 +59,21 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute("user") User loginUser, Model model) {
-        User user = userService.login(loginUser);
-
-        if (user == null) {
-            model.addAttribute("error", "Invalid email or password");
-            return "login";
-        }
+    public String login(@ModelAttribute("user") User loginForm, Model model) {
+        User user = userService.login(loginForm);
 
         model.addAttribute("user", user);
-        return "profile";
+        return "redirect:/";
     }
 
-    @GetMapping("/login")
-    public String showLoginPage(Model model){
-        model.addAttribute("user", new User());
-        return "login";
+    @PostMapping("/logout")
+    public String logout(@ModelAttribute("user") User user){
+        user.setCurrentLogin(false);
+        return "redirect:/";
     }
 
-    @GetMapping("/profile")
-    public String profile() {
-        return "profile";
+    @GetMapping("/homePageLoginTrue")
+    public String homePageLoginTrue(Model model) {
+        return "homePageLoginTrue";
     }
 }

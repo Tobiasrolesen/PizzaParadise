@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="da" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>PizzaParadise - Bestilling</title>
+</head>
+<body>
+
+<div class="header">
+    <div>
+        <h2>PizzaParadise</h2>
+    </div>
+
+    <div>
+        <span th:text="${user.email}">Bruger</span>
+
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">Log ud</button>
+        </form>
+    </div>
+</div>
+
+<h1>Lav din ordre</h1>
+
+<h2>Valgte pizzaer:</h2>
+<ul>
+    <li th:each="p : ${order.pizzas}">
+        <span th:text="${p.name}">Pizza navn</span> -
+        <span th:text="${p.price}">0</span> kr
+    </li>
+</ul>
+
+<h2>Tilføj pizza</h2>
+
+<form th:action="@{/add}" method="post">
+    <label for="pizza">Vælg pizza:</label>
+    <select id="pizza" name="pizzaId">
+        <option th:each="p : ${allPizzas}"
+                th:value="${p.id}"
+                th:text="${p.name}">
+        </option>
+    </select>
+    <button type="submit">Tilføj</button>
+</form>
+
+<h2>Gennemfør ordre</h2>
+
+<form th:action="@{/complete}" method="post">
+    <button type="submit">Gennemfør ordre</button>
+</form>
+
+</body>
+</html>

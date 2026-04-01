@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS pizzas;
+DROP TABLE IF EXISTS order_items;
 
 CREATE TABLE users (
                        id INT AUTO_INCREMENT PRIMARY KEY,
@@ -23,11 +24,18 @@ CREATE TABLE pizzas (
 
 CREATE TABLE orders (
                         id INT AUTO_INCREMENT PRIMARY KEY,
-                        userId int NOT NULL,
-                        base VARCHAR(100) NOT NULL,
-                        sauce VARCHAR (100) NOT NULL,
-                        topping VARCHAR(100) NOT NULL,
+                        userId INT NOT NULL,
                         totalPrice DOUBLE NOT NULL,
-                        date TIMESTAMP NOT NULL,
-                        FOREIGN KEY (userId) REFERENCES users(id)
-)
+                        date DATETIME NOT NULL
+);
+
+CREATE TABLE order_items (
+                             id INT AUTO_INCREMENT PRIMARY KEY,
+                             orderId INT NOT NULL,
+                             base VARCHAR(255),
+                             sauce VARCHAR(255),
+                             topping VARCHAR(255),
+                             price DOUBLE
+);
+
+

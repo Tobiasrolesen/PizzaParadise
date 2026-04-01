@@ -5,16 +5,25 @@
     <title>PizzaParadise</title>
 </head>
 <body>
-<h1>Arcade archive</h1>
 
-<p>Velkommen til vores pizza butik.</p>
+<h1>Pizza Paradise</h1>
+<div className="menu">
+    <p>Velkommen til vores pizza butik.</p> <br>
 
-<p><a href="/login">Gå til Login</a></p>
-<p><a href="/createUser">Gå til Opret</a></p>
-<p><a href="/pizza-list">Vis alle Pizzaer vi tilbyder</a></p>
-<p><a href="/createPizza">Lav din egen pizza</a></p>
+    <p th:if="${user == null or !user.currentLogin}">
+        <a href="/login">Gå til Login</a>
+    </p> <br>
 
-<p><a href="/profile">Vis din profil</a></p>
+    <p th:if="${user == null or !user.currentLogin}">
+        <a href="/createUser">Gå til Opret</a>
+    </p> <br>
+
+    <p th:if="${user != null and user.currentLogin}">
+        <a href="/profile">Gå til Min Profil</a>
+    </p> <br>
+
+    <p><a href="/pizza-list">Vis alle Pizzaer vi tilbyder</a></p>
+</div>
 
 </body>
 </html>

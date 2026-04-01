@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="da" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" th:href="@{/homePageLoginTrue.css}" />
+    <meta charset="UTF-8">
+    <title>PizzaParadise</title>
+
+</head>
+
+<body>
+
+
+<div class="header">
+    <div class="header-left">
+        PizzaParadise
+    </div>
+
+    <div class="header-right">
+        <span th:text="${user.email}">Bruger</span>
+
+        <form th:action="@{/logout}" method="post" class="logout-btn">
+            <button type="submit">Log ud</button>
+        </form>
+    </div>
+</div>
+
+<div class="menu">
+
+    <p><a href="/pizza-list">Se alle pizzaer</a></p>
+    <p><a href="/order">Opret ordre</a></p>
+    <p><a href="/profile">Se profil</a></p>
+    <p><a href="/orderHistory">Se ordrehistorik</a></p>
+
+</div>
+
+</body>
+</html>

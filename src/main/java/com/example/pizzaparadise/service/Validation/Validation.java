@@ -14,7 +14,6 @@ public class Validation {
     public void validateOrder(Order order){
         int id = order.getId();
         String user = order.getUser().getName();
-        String pizza = order.getPizza().getName();
         String date = order.getDate().toString();
         double totalPrice = order.getTotalPrice();
 
@@ -97,11 +96,11 @@ public class Validation {
         }
 
         if (adress == null || adress.isEmpty()) {
-            throw new ValidationException("Adress cannot be empty");
+            throw new ValidationExceptionUser("Adress cannot be empty");
         }
 
         if (bonusPoint < 0) {
-            throw new ValidationException("Bonus point is negative");
+            throw new ValidationExceptionUser("Bonus point is negative");
         }
     }
 }

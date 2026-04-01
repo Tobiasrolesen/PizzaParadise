@@ -10,12 +10,13 @@ public class User {
     private String adress;
     private int bonusPoint = 0;
     private List<Order> orders;
+    private boolean currentLogin;
 
     public User(){
 
     }
 
-    public User(int id, String name, String email, String password, String adress, int bonusPoint, List<Order> orders) {
+    public User(int id, String name, String email, String password, String adress, int bonusPoint, List<Order> orders, boolean currentLogin) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -23,57 +24,52 @@ public class User {
         this.adress = adress;
         this.bonusPoint = bonusPoint;
         this.orders = orders;
+        this.currentLogin = currentLogin;
     }
 
     public int getId() {
         return id;
     }
-
     public String getName() {
         return name;
     }
-
     public String getPassword() {
         return password;
     }
-
     public String getEmail() {
         return email;
     }
-
     public String getAdress() {
         return adress;
     }
-
     public int getBonusPoint() {
         return bonusPoint;
     }
-
     public List<Order> getOrders() {
         return orders;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
-
     public void setAdress(String adress) {
         this.adress = adress;
     }
-
     public void setBonusPoint(int bonusPoint) {
         this.bonusPoint = bonusPoint;
     }
-
     public void setOrders(List<Order> orders) {
         this.orders = orders;
+    }
+    public void setCurrentLogin(boolean currentLogin) {
+        this.currentLogin = currentLogin;
+    }
+    public boolean isCurrentLogin() {
+        return currentLogin;
     }
 }

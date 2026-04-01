@@ -21,4 +21,8 @@ public class PizzaService {
     public List<Pizza> getAllPizzas() {
         return pizzaRepository.findAllPizza();
     }
+
+    public Pizza findById(int pizzaId) {
+        return pizzaRepository.findById(pizzaId);
+    }
 }

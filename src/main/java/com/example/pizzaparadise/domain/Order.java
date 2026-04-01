@@ -3,18 +3,20 @@ package com.example.pizzaparadise.domain;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Order {
     private int id;
     private User user;
-    private Pizza pizza;
+    private List<Pizza> pizzas = new ArrayList<>();
     private LocalDateTime date;
     private double totalPrice;
 
-    public Order(int id, User user, Pizza pizza, LocalDateTime date, double totalPrice) {
+    public Order(int id, User user, List<Pizza> pizza, LocalDateTime date, double totalPrice) {
         this.id = id;
         this.user = user;
-        this.pizza = pizza;
+        this.pizzas = pizza;
         this.date = date;
         this.totalPrice = totalPrice;
     }
@@ -25,11 +27,11 @@ public class Order {
     public void setUser(User user) {
         this.user = user;
     }
-    public Pizza getPizza() {
-        return pizza;
+    public List<Pizza> getPizzas() {
+        return pizzas;
     }
-    public void setPizza(Pizza pizza) {
-        this.pizza = pizza;
+    public void setPizzas(List<Pizza> pizzas) {
+        this.pizzas = pizzas;
     }
     public int getId() {
         return id;

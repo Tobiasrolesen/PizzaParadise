@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="da" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ordrehistorik</title>
+</head>
+<body>
+
+<h1>Din ordrehistorik</h1>
+
+<div th:if="${orders.size() == 0}">
+    <p>Du har endnu ikke lavet nogle ordrer.</p>
+</div>
+
+<div th:each="order : ${orders}">
+    <h3>Ordre #[[${order.id}]] - [[${order.date}]]</h3>
+    <p>Total pris: [[${order.totalPrice}]] kr</p>
+
+    <ul>
+        <li th:each="p : ${order.pizzas}">
+            [[${p.base}]] / [[${p.sauce}]] / [[${p.topping}]] - [[${p.price}]] kr
+        </li>
+    </ul>
+    <hr>
+</div>
+
+</body>
+</html>
